@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffeb36">
+<meta name="description" content="みんなでワイワイ楽しむNGワードパーティー">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<title>NGワードパーティー</title>
+<style>
+:root{--ink:#19151f;--yellow:#ffeb36;--purple:#8053f7;--paper:#fffdf4;--blue:#75ddfa;--green:#95eab4;--pink:#ff9ecb}
+*{box-sizing:border-box}body{margin:0;background:#f3efff;color:var(--ink);font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif}
+button,input{font:inherit}button{cursor:pointer}.app{max-width:600px;margin:auto;min-height:100dvh;background:var(--paper);border-left:2px solid var(--ink);border-right:2px solid var(--ink);box-shadow:0 0 24px #1a10200d}.tape{height:12px;background:repeating-linear-gradient(130deg,var(--ink) 0 18px,var(--yellow) 18px 36px)}
+.hero{background:var(--yellow);text-align:center;padding:18px 12px 16px}.logo{font-size:clamp(32px,9vw,45px);font-weight:1000;line-height:1.04;color:#8053f7;letter-spacing:-1.5px;text-shadow:2px 2px white,-2px -2px white,3px 4px var(--ink)}.subtitle{display:inline-block;background:white;border:2px solid var(--ink);border-radius:12px;padding:5px 10px;font-weight:900;transform:rotate(-2deg);margin-top:12px}.mascots{font-size:56px;margin:8px 0 2px;filter:drop-shadow(2px 3px 0 var(--ink))}.content{padding:16px}.btn{border:2px solid var(--ink);border-radius:14px;padding:12px 10px;font-weight:900;box-shadow:0 4px 0 var(--ink);background:white;color:var(--ink);transition:transform .08s,box-shadow .08s}.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}.purple{background:var(--purple);color:white}.blue{background:var(--blue)}.green{background:var(--green)}.pink{background:var(--pink)}.yellow{background:var(--yellow)}.white{background:white}.full{width:100%}.grid{display:grid;gap:9px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.tile{border:2px solid var(--ink);border-radius:14px;padding:12px 6px;text-align:center;font-weight:900;box-shadow:0 3px 0 var(--ink);background:white}.section{font-size:18px;font-weight:1000;margin:2px 0 10px}.muted{color:#6c6570;font-size:12px;line-height:1.55}.field{width:100%;min-width:0;border:2px solid var(--ink);border-radius:10px;padding:9px;background:white;color:var(--ink)}.dot{display:inline-block;width:17px;height:17px;border:2px solid var(--ink);border-radius:50%;flex-shrink:0}.name-row{display:flex;align-items:center;gap:8px;margin:8px 0}.genre{border:2px solid var(--ink);border-radius:11px;padding:10px 7px;font-size:13px;font-weight:850;text-align:left;background:white}.genre.on{background:#e8dcff;box-shadow:inset 0 0 0 1px var(--purple)}.hide{display:none!important}.summary{border:2px solid var(--ink);border-radius:12px;padding:12px;background:#fff0a5;font-size:13px;font-weight:800;margin:14px 0}.wordcard{border:3px solid var(--ink);border-radius:20px;background:#fff0a5;padding:20px 12px;text-align:center;min-height:185px;display:flex;flex-direction:column;align-items:center;justify-content:center}.word{font-size:clamp(28px,8vw,38px);font-weight:1000;overflow-wrap:anywhere}.footer{background:var(--yellow);text-align:center;padding:12px;font-size:12px;font-weight:900;border-top:2px solid var(--ink)}.lookup-result{border:2px solid var(--ink);border-radius:14px;padding:15px;text-align:center;background:#fff0a5;margin-top:12px}.mini{border:2px solid var(--ink);border-radius:12px;padding:9px 6px;text-align:center;background:white;font-weight:850;font-size:13px}.status{font-weight:900;margin:8px 0}.hero-small{font-size:27px}.spacer{height:8px}
+@media(min-width:601px){body{padding:20px 0}.app{border:2px solid var(--ink);border-radius:22px;overflow:hidden;min-height:calc(100dvh - 40px)}}
+</style>
+</head>
+<body><main class="app"><div class="tape"></div>
+<section id="home">
+ <header class="hero"><div class="logo">NGワード<br>パーティー！</div><div class="subtitle">言っちゃダメ！言わせて楽しい！</div><div class="mascots" aria-hidden="true">👾</div><b>みんなでワイワイ楽しもう！ 🎉</b></header>
+ <div class="content"><button class="btn purple full" id="start" style="font-size:21px;padding:17px">▶ ゲームスタート！</button>
+ <div class="grid g2" style="margin-top:16px"><button class="tile blue" id="genreJump"><div style="font-size:28px">🃏💗</div>ジャンルを選ぶ ›</button><button class="tile green" id="rulesBtn"><div style="font-size:28px">📖💡</div>ルールを見る ›</button></div>
+ <div id="rules" class="summary hide" style="background:#e8f8ff">① 人数とジャンルを選ぶ<br>② 順番に画面をタップ、5秒後にワードが出るよ<br>③ 自分のNGワードを言わないように会話しよう<br>④ 忘れたら確認して、確認後は必ず隠そう！<button class="btn white full" id="rulesClose" style="margin-top:10px">閉じる</button></div>
+ <div class="summary" style="text-align:center"><div style="font-size:28px">🩷 👾 🐥 🩵</div><b>準備はOK？</b><div class="muted">3〜10人で遊べるNGワードゲーム</div></div></div>
+</section>
+<section id="setup" class="hide"><header class="hero"><div class="logo hero-small">🎉 ゲームの準備 🎉</div><b>メンバーを決めよう！</b></header><div class="content">
+<div class="section">① 何人で遊ぶ？</div><div id="counts" class="grid g4"></div>
+<div class="section" style="margin-top:18px">② 名前とカラー</div><div id="names"></div>
+<div class="section" style="margin-top:18px">③ ジャンルを選ぼう！</div><p class="muted">いくつ選んでもOK！複数ジャンルだと盛り上がるよ。</p><div id="genres" class="grid g2"></div>
+<div id="customWrap" class="hide" style="margin-top:10px"><label for="custom" class="section">オリジナルジャンル名</label><input id="custom" class="field" placeholder="例：美容・コスメ"></div>
+<div id="summary" class="summary"></div><button class="btn purple full" id="begin">この設定でスタート！ →</button><button class="btn white full" id="back" style="margin-top:12px">← ホームに戻る</button></div></section>
+<section id="game" class="hide"><header class="hero"><div class="logo hero-small">NGワードをチェック！</div><div id="progress" class="status"></div></header><div class="content">
+<div class="status" style="text-align:center"><span id="playerDot" class="dot"></span> <span id="playerName"></span> <span id="playerColor" class="muted"></span></div>
+<div id="wordCard" class="wordcard"><div id="stage" class="word">準備できた？</div><div id="hint" style="font-size:13px;font-weight:800;margin-top:12px">本人は画面を見ず、周りの人が確認してね</div><button id="reveal" class="btn purple full" style="margin-top:16px">👆 タップしてスタート</button></div>
+<div class="grid g2" style="margin-top:16px"><button id="prev" class="btn white">← 前の人</button><button id="next" class="btn purple">次の人 →</button></div>
+<button id="lookup" class="btn blue full" style="margin-top:12px">🔎 忘れた人のワードを確認</button>
+<div id="lookupBox" class="hide" style="margin-top:16px"><div class="section">誰のワードを確認する？</div><div id="players" class="grid g2"></div>
+<div id="result" class="lookup-result hide"><div class="muted">確認中のNGワード</div><div id="resultWho" class="status"></div><div id="resultWord" class="word"></div><button id="hideWord" class="btn purple full" style="margin-top:15px">🙈 ワードを隠す</button><div id="hiddenMsg" class="hide status" style="margin-top:14px">🙈 ワードを隠しました！</div><button id="showWord" class="btn white full" style="margin-top:10px">👁 もう一度確認する</button></div></div>
+<button id="settings" class="btn white full" style="margin-top:12px">⚙ 設定に戻る</button></div></section>
+<section id="finish" class="hide"><header class="hero"><div class="mascots">👾🎉</div><div class="logo hero-small">ゲーム終了！</div><b>みんなおつかれさま！</b></header><div class="content"><button id="again" class="btn purple full">🔄 同じ設定でもう一度</button><button id="edit" class="btn white full" style="margin-top:12px">人数・ジャンルを変更</button></div></section>
+<footer class="footer">⚠️ NGワードを言わずに乗り切ろう！ ⚠️</footer><div class="tape"></div></main>
+<script>
+(() => {
+const $=id=>document.getElementById(id), screens=['home','setup','game','finish'];
+const palette=[['#ef476f','赤'],['#168aad','青'],['#2a9d65','緑'],['#8b5cf6','紫'],['#f59e0b','橙'],['#e85d9e','桃'],['#68717d','灰'],['#84a62a','黄緑'],['#27b9d6','水色'],['#8b5e3c','茶']];
+const bank=[
+['日常会話','ありがとう 本当 絶対 なるほど 確かに 大丈夫 すごい 最近 やばい たぶん もちろん なんで 普通 結局 マジで'],
+['食べ物','ラーメン コーヒー カレー 寿司 ケーキ おにぎり アイス 焼肉 パン チョコ 野菜 餃子 うどん ピザ お菓子'],
+['恋愛','好き デート 告白 恋人 結婚 かわいい かっこいい 元カレ 嫉妬 運命 キス 両思い タイプ ドキドキ 一目惚れ'],
+['学校・仕事','上司 学校 仕事 先生 宿題 残業 会議 給料 同僚 テスト 遅刻 休憩 資格 面接 通勤'],
+['友達・人間関係','親友 約束 秘密 相談 喧嘩 仲直り 友達 グループ 噂 第一印象 気まずい 連絡 遊び 信頼 本音'],
+['趣味・娯楽','映画 音楽 漫画 ゲーム 読書 カラオケ 動画 推し 写真 旅行 ドラマ ダンス ライブ 小説 配信'],
+['アニメ・ゲーム','主人公 ラスボス レベル 魔法 冒険 必殺技 ガチャ 課金 攻略 アニメ 声優 変身 ボス 仲間 最終回'],
+['旅行','温泉 ホテル 飛行機 新幹線 観光 お土産 海外 地図 旅館 空港 海 山 パスポート 乗り換え 絶景'],
+['お金・買い物','節約 貯金 給料 値段 セール 財布 ポイント 割引 現金 カード 借金 投資 高い 安い 衝動買い'],
+['スポーツ','サッカー 野球 水泳 ゴール 優勝 練習 筋トレ 試合 監督 選手 応援 マラソン バスケ ホームラン ストレッチ'],
+['芸能人・有名人','俳優 女優 アイドル 歌手 芸人 モデル 有名人 ドラマ ファン ライブ インタビュー 司会 ダンス オーディション'],
+['上級者向け','つまり 一応 ちなみに 絶対 とりあえず 正直 別に 確かに 逆に 普通に 結局 やっぱり 本当に なんとなく そういえば']
+];
+let count=3,names=Array.from({length:10},(_,i)=>'プレイヤー'+(i+1)),chosen=['日常会話','食べ物'],words=[],idx=0,timer=null,phase='ready',lookupIndex=null;
+function stop(){if(timer){clearInterval(timer);timer=null}}
+function show(id){screens.forEach(s=>$(s).classList.toggle('hide',s!==id));stop()}
+function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function counts(){ $('counts').innerHTML='';[3,4,5,6,7,8,9,10].forEach(n=>{let b=document.createElement('button');b.className='btn '+(count===n?'purple':'white');b.textContent=n+'人';b.onclick=()=>{count=n;counts();nameInputs()};$('counts').append(b)})}
+function nameInputs(){ $('names').innerHTML='';for(let i=0;i<count;i++){let row=document.createElement('div');row.className='name-row';let d=document.createElement('span');d.className='dot';d.style.background=palette[i][0];let inp=document.createElement('input');inp.className='field';inp.value=names[i];inp.placeholder='プレイヤー'+(i+1);inp.setAttribute('aria-label','プレイヤー'+(i+1)+'の名前');inp.oninput=()=>names[i]=inp.value;row.append(d,inp);$('names').append(row)}}
+function genreUI(){ $('genres').innerHTML='';bank.map(x=>x[0]).concat(['オリジナルジャンル']).forEach(g=>{let b=document.createElement('button');b.className='genre'+(chosen.includes(g)?' on':'');b.textContent=(chosen.includes(g)?'☑ ':'○ ')+g;b.onclick=()=>{chosen=chosen.includes(g)?chosen.filter(x=>x!==g):chosen.concat(g);genreUI()};$('genres').append(b)});$('customWrap').classList.toggle('hide',!chosen.includes('オリジナルジャンル'));$('summary').textContent='選択中：'+(chosen.map(g=>g==='オリジナルジャンル'?($('custom').value.trim()||g):g).join('・')||'ジャンルを選んでください');$('begin').disabled=!chosen.length||(chosen.includes('オリジナルジャンル')&&!$('custom').value.trim())}
+function render(){stop();phase='ready';$('progress').textContent=(idx+1)+' / '+count+'人目';$('playerName').textContent=names[idx]||'プレイヤー'+(idx+1);$('playerColor').textContent='・'+palette[idx][1];$('playerDot').style.background=palette[idx][0];$('wordCard').style.borderColor=palette[idx][0];$('stage').textContent='準備できた？';$('stage').style.color=palette[idx][0];$('hint').textContent='本人は画面を見ず、周りの人が確認してね';$('reveal').hidden=false;$('reveal').textContent='👆 タップしてスタート';$('next').textContent=idx===count-1?'ゲーム終了 →':'次の人 →';hideLookup()}
+function begin(){let pool=[];chosen.forEach(g=>{let row=bank.find(x=>x[0]===g);if(row)pool.push(...row[1].split(' '));if(g==='オリジナルジャンル')pool.push(...'美容 コスメ メイク 化粧水 毛穴 スキンケア リップ 香水 ヘアケア ネイル'.split(' '))});pool=[...new Set(pool)];if(pool.length<count){$('summary').textContent='ワード数が足りません。別のジャンルも選んでね！';return}words=shuffle(pool).slice(0,count);idx=0;show('game');$('lookupBox').classList.add('hide');render()}
+function reveal(){if(phase!=='ready')return;phase='count';let n=5;$('reveal').hidden=true;$('stage').textContent=n;$('hint').textContent='ワードが出るまであと…';timer=setInterval(()=>{n--;if(n>0){$('stage').textContent=n}else{stop();phase='shown';$('stage').textContent=words[idx];$('hint').textContent='この人の色：'+palette[idx][1]+'。周りの人が覚えよう';$('reveal').hidden=false;$('reveal').textContent='🙈 ワードを隠す'}},1000)}
+function hideLookup(){ $('result').classList.add('hide');$('hiddenMsg').classList.add('hide');$('resultWord').classList.remove('hide');$('hideWord').classList.remove('hide');lookupIndex=null}
+function makeLookup(){hideLookup();$('players').innerHTML='';for(let i=0;i<count;i++){let b=document.createElement('button');b.className='mini';let d=document.createElement('span');d.className='dot';d.style.background=palette[i][0];d.style.marginRight='5px';b.append(d,document.createTextNode(names[i]||'プレイヤー'+(i+1)));b.onclick=()=>{lookupIndex=i;$('result').classList.remove('hide');$('resultWho').textContent=(names[i]||'プレイヤー'+(i+1))+' のNGワード';$('resultWho').style.color=palette[i][0];$('resultWord').textContent=words[i];$('resultWord').classList.remove('hide');$('hiddenMsg').classList.add('hide');$('hideWord').classList.remove('hide')};$('players').append(b)}}
+$('start').onclick=()=>show('setup');$('genreJump').onclick=()=>show('setup');$('rulesBtn').onclick=()=>$('rules').classList.toggle('hide');$('rulesClose').onclick=()=>$('rules').classList.add('hide');$('back').onclick=()=>show('home');$('begin').onclick=begin;$('custom').oninput=genreUI;
+$('reveal').onclick=()=>{if(phase==='shown'){phase='ready';$('stage').textContent='ワードを隠したよ！';$('hint').textContent='次の人に交代してね';$('reveal').textContent='もう一度表示（5秒待機）'}else reveal()};
+$('prev').onclick=()=>{idx=(idx-1+count)%count;render()};$('next').onclick=()=>{if(idx<count-1){idx++;render()}else show('finish')};
+$('lookup').onclick=()=>{let box=$('lookupBox');box.classList.toggle('hide');if(!box.classList.contains('hide'))makeLookup()};
+$('hideWord').onclick=()=>{if(lookupIndex===null)return;$('resultWord').classList.add('hide');$('hideWord').classList.add('hide');$('hiddenMsg').classList.remove('hide')};
+$('showWord').onclick=()=>{if(lookupIndex===null)return;$('resultWord').classList.remove('hide');$('hideWord').classList.remove('hide');$('hiddenMsg').classList.add('hide')};
+$('settings').onclick=()=>show('setup');$('again').onclick=begin;$('edit').onclick=()=>show('setup');
+counts();nameInputs();genreUI();
+if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+})();
+</script>
+</body></html>
